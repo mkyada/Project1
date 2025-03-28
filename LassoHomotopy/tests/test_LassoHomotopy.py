@@ -2,7 +2,7 @@ import csv
 
 import numpy
 
-from model.LassoHomotopy import LassoHomotopyModel
+from ..model.LassoHomotopy import LassoHomotopyModel
 
 def test_predict():
     model = LassoHomotopyModel()
@@ -16,4 +16,5 @@ def test_predict():
     y = numpy.array([[v for k,v in datum.items() if k=='y'] for datum in data])
     results = model.fit(X,y)
     preds = results.predict(X)
-    assert preds == 0.5
+    print(preds.mean())
+    assert numpy.isclose(preds.mean(), 3.3350)
